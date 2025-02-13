@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suprise Suprise!</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f5cac3, #f7ede2);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #ff477e;
+        }
+        #valentineImage {
+            width: 250px;
+            height: auto;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        #buttons {
+            position: relative;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+        #yesButton {
+            background-color: #06d6a0;
+            color: white;
+        }
+        #no {
+            background-color: #ef476f;
+            color: white;
+            position: absolute;
+        }
+        @keyframes dance {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Can you please be my Valentine, Sbonga?</h1>
+    <img id="valentineImage" src="https://i.imgur.com/qnrCWjS.png" alt="AI version of Marry">
+    
+    <div id="buttons">
+        <button id="yesButton">Yes</button>
+        <button id="no">No</button>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById("yesButton");
+        let no = document.getElementById("no");
+        let valentineImage = document.getElementById("valentineImage");
+
+        let noTexts = [
+            "Are you sure, princess?", "Please give me a chance, Sbonga!",
+            "Shaylaa, please!", "Don't do this to me baby 🥺",
+            "You're breaking my heart 💔", "I'm gonna cry 😭", "Ngiyakucela sthandwa sami!"
+        ];
+
+        let sadImages = [
+            "https://i.imgur.com/yAoeufX.jpeg",
+            "https://i.imgur.com/utWKhUW.jpeg",
+            "https://i.imgur.com/pywJBUM.png",
+            "https://i.imgur.com/cLMX31e.jpeg",
+            "https://i.imgur.com/UEsbclv.png",
+            "https://i.imgur.com/dCi8SX5.jpeg",
+            "https://i.imgur.com/wu9JNzh.jpeg"
+        ];
+
+        let happyImages = [
+            "https://i.imgur.com/a2P3nqA.png",
+            "https://i.imgur.com/a2P3nqA.png"
+        ];
+
+        no.addEventListener("click", () => {
+            let randomText = noTexts[Math.floor(Math.random() * noTexts.length)];
+            no.innerText = randomText;
+
+            let i = Math.floor(Math.random() * (window.innerWidth - 150));
+            let j = Math.floor(Math.random() * (window.innerHeight - 100));
+            no.style.left = i + "px";
+            no.style.top = j + "px";
+
+            let currentWidth = yesButton.offsetWidth;
+            let currentHeight = yesButton.offsetHeight;
+            yesButton.style.width = (currentWidth + 15) + "px";
+            yesButton.style.height = (currentHeight + 5) + "px";
+
+            let randomImage = sadImages[Math.floor(Math.random() * sadImages.length)];
+            valentineImage.src = randomImage;
+        });
+
+        yesButton.addEventListener("click", () => {
+            let randomHappyImage = happyImages[Math.floor(Math.random() * happyImages.length)];
+            valentineImage.src = randomHappyImage;
+            valentineImage.style.animation = "dance 1s infinite";
+            alert("Thank you sthandwa sami, I can't wait to see you! ❤️");
+        });
+    </script>
+
+</body>
+</html>
